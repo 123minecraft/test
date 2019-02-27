@@ -1,0 +1,775 @@
+verbose
+default: false
+# description: Sets whether the server should dump all configuration values to the server log on startup.
+# 設置服務器是否應在啟動時將所有配置值轉儲到服務器日誌。
+
+enable-player-collisions
+default: true
+# description: Sets whether the server should allow players to collide with one another.
+# 設置服務器是否允許玩家互相碰撞。
+# warning: This setting can be broken by plugins interacting with the scoreboard, double check plugins when troubleshooting this value.
+# 此設置可以通過插件與記分板交互來解決，在對此值進行故障排除時請仔細檢查插件。
+
+player-auto-save-rate
+default: -1
+# description: Sets the tick delay between automatic player data saves. Default inherits from world autosave.
+# 設置自動播放器數據保存之間的滴答延遲。默認繼承自世界自動保存。
+
+max-player-auto-save-per-tick
+default: -1
+# description: Controls how many players may have their data autosaved per tick. The default is to automatically use Paper’s recommended value, currently 10, subject to change as needed.
+# 控制每個tick可以自動保存數據的玩家數量。默認設置是自動使用Paper的建議值（當前為10），可根據需要進行更改。
+
+load-permissions-yml-before-plugins
+default: true
+# description: Loads bukkit’s permission.yml file before plugins, allowing them to check permissions immediately on enable.
+# 在插件之前加載bukkit的permission.yml文件，允許他們在啟用時立即檢查權限。
+
+bungee-online-mode
+default: true
+# description: Instructs the server how to behave when behind bungee Set to match your proxy’s online-mode setting.
+# 指示服務器在彈出後面的行為設置為匹配代理的在線模式設置。
+
+sleep-between-chunk-saves
+default: false
+# description: Instructs the server to sleep the chunk save thread after every chunk save.
+# 指示服務器在每次塊保存後休眠塊保存線程。
+# warning: Setting this value to true may lead to increased memory usage and slower chunk saving.
+# 將此值設置為true可能會導致內存使用量增加和塊節省速度變慢。
+
+region-file-cache-size
+default: 256
+# description: Sets the maximum size of the region file cache.
+# 設置區域文件緩存的最大大小。
+
+save-empty-scoreboard-teams
+default: false
+# description: Some scoreboard plugins leave hundreds of empty scoreboard teams around, dramatically slowing down login times. This sets whether the server should remove those empty teams automatically.
+# 一些記分牌插件會留下數百個空的記分板團隊，大大減慢了登錄時間。這將設置服務器是否應自動刪除這些空團隊。
+
+use-alternative-luck-formula
+default: false
+#是否使用新的幸運機制，詳見https://luckformula.emc.gs
+
+incoming-packet-spam-threshold
+default: 300
+# description: Sets the threshold at which the server will consider incoming packets as spam and ignore them.
+# 設置服務器將傳入數據包視為垃圾郵件並忽略它們的閾值。
+
+remove-invalid-statistics
+default: false
+# description: Instructs the server to remove invalid statistics from the world save data as it’s loaded.
+# 指示服務器在加載時從世界保存數據中刪除無效統計信息。
+
+min-chunk-load-threads
+default: 2
+# description: Sets the minimum number of threads to use for async chunk loading File I/O.
+# 設置用於異步塊加載文件I / O的最小線程數。
+# warning: This value only affects File I/O threads; increasing it without reason is unlikely to improve chunk load speeds.
+# 該值僅影響文件I / O線程; 無理由地增加它不太可能提高塊負載速度。
+
+#此項1.13版本已變更為以下，新的Chunk讀取機制，使玩家避免掉入未載入的地圖區塊(優先讀取玩家面向的善行區域)，並提供線程運算的控制項
+  async-chunks:
+    enable: true
+    generation: true
+    thread-per-world-generation: true
+    load-threads: -1
+
+suggest-player-names-when-null-tab-completions
+default: true
+# description: Instructs the server to return a list of Players when tab-completing if the plugin has no tab completions of its own.
+# 如果插件沒有自己的選項卡完成，則指示服務器在製表符完成時返回播放器列表。
+
+save-player-data
+default: true
+# 是否保存玩家數據
+
+use-versioned-world
+default: false
+# 更新舊版的地圖功能
+# 注意:此項不應在生成地圖時使用，應該以測試方式嘗試更新舊地圖，注意備份
+
+queue-light-updates-max-loss
+default: 10
+# 重新點亮區塊線程的最大丟失?
+# 注意:意義不明
+
+  velocity-support:
+    enabled: false
+    online-mode: false
+    secret: ''
+#開啟新版velocity支援項，詳見https://velocity.readthedocs.io/en/latest/users/getting-started.html
+
+  watchdog:
+    early-warning-every: 5000
+    early-warning-delay: 10000
+#看門狗
+#注意:意義不明
+
+  spam-limiter:
+    tab-spam-increment: 1
+    tab-spam-limit: 500
+#垃圾訊息限制
+#注意:意義不明
+
+  book-size:
+    page-max: 2560
+    total-multiplier: 0.98
+#書本內容限制
+#注意:需測試
+
+timings
+# 時間
+
+enabled
+default: true
+# description: Controls the global enable state of the Timings platform.
+# 控制Timings平台的全局啟用狀態。
+
+verbose
+default: true
+# description: Instructs Timings to provide more specific information in its reports. For example, specific entity types causing lag rather than just “entities”.
+# 指示計時在其報告中提供更具體的信息。例如，特定實體類型導致滯後而不僅僅是“實體”。
+
+server-name-privacy
+default: false
+# description: Instructs Timings to hide server name information in reports.
+# 指示計時在報告中隱藏服務器名稱信息。
+
+hidden-config-entries
+default: { database, settings.bungeecord-addresses }
+# description: Configuration entries to hide in Timings reports.
+# 要在Timings報告中隱藏的配置條目。
+
+history-interval
+default: 300
+# description: The interval in seconds between individual points in the Timings report
+# “計時”報告中各個點之間的間隔秒數
+
+history-length
+default: 3600
+# description: The total amount of data to keep for a single report.
+# 為單個報告保留的數據總量。
+# warning: This value is validated server side, massive reports will be rejected by the report site.
+# 此值已在服務器端驗證，報告站點將拒絕大量報告。
+
+messages
+# 消息
+
+kick
+
+authentication-servers-down
+default: ‘ ‘ (empty string)
+# note: The default value instructs the server to send the vanilla translateable kick message.
+# 默認值指示服務器發送vanilla可翻譯反饋消息。
+# description: Message to kick a player with when they are disconnected because the Mojang authentication servers are down.
+# 由於Mojang身份驗證服務器已關閉而導致播放器斷開連接的消息。
+
+flying-player
+default: Flying is not enabled on this server
+# description: Message to use when kicking a player for flying.
+# 踢球員飛行時使用的消息。
+
+flying-vehicle
+default: Flying is not enabled on this server
+# description: Message to use when kicking a player’s vehicle for flying.
+# 踢球員飛行時使用的消息。
+
+World Settings
+
+World settings are configured on a per-world basis. The child-node default is used for all worlds that do not have their own specific settings.
+# 世界設置基於每個世界進行配置。子節點默認 值用於沒有自己特定設置的所有世界。
+
+keep-spawn-loaded-range
+default: 8
+# description: The number of chunks around spawn to keep loaded.
+# 要保持加載的spawn周圍的塊數。
+
+auto-save-interval
+default: -1
+# note: Default value instructs the world to use Bukkit’s default.
+# 默認值指示全世界使用Bukkit的默認值。
+# description: Instructs this world to use a specific value for auto-save instead of bukkit’s global value.
+# 指示這個世界使用特定值來自動保存而不是bukkit的全局值。
+
+parrots-are-unaffected-by-player-movement
+default: false
+# description: Makes parrots “sticky” so they do not fall off a player’s shoulder when they move. Use crouch to shake them off.
+# 使鸚鵡“發粘”，這樣他們移動時就不會脫落玩家的肩膀。使用蹲下來擺脫它們。
+
+game-mechanics
+# 遊戲機制
+
+disable-player-crits
+default: false
+# description: Instructs the server to disable critical hits in PvP, instead treating them as normal hits.
+# 指示服務器禁用PvP中的重要命中，而不是將它們視為正常命中。
+
+disable-sprint-interruption-on-attack
+default: false
+#禁用攻擊中斷衝刺機制
+
+shield-blocking-delay
+default: 5
+#盾牌格擋延遲時間
+#注意:不明時間單位
+
+disable-chest-cat-detection
+default: false
+# description: Allows you to open chests even if they have a cat sitting on top of them.
+# 即使他們有一隻貓坐在它們上面，也允許你打開箱子。
+
+disable-end-credits
+default: false
+# description: Instructs the server to never send the end game credits when leaving the end.
+# 指示服務器在離開結束時永遠不會發送最終遊戲積分。
+
+villages-load-chunks
+default: false
+#村莊是否觸發加載Chunk
+
+scan-for-legacy-ender-dragon
+default: true
+#掃描中介龍遺留資料
+#注意:意義不明
+
+disable-unloaded-chunk-enderpearl-exploit
+default: true
+#禁用終界珍珠探索未加載的區塊
+
+disable-explosion-knockback
+default: false
+# description: Instructs the server to completely block any knockback that occurs as a result of an explosion.
+# 指示服務器完全阻止因爆炸而發生的任何回擊。
+
+elytra-hit-wall-damage
+default: true
+# description: Instructs the server to calculate and do player damage when a player flies into a wall while using an elytra.
+# 指示服務器在使用elytra時玩家飛入牆壁時計算並對玩家造成傷害。
+# 1.13版本中似乎移除了這個項目
+
+grass-spread-tick-rate
+default: 1
+# description: Sets the delay, in ticks, at which the server attempts to spread grass. Higher values will result in slower spread.
+# 設置服務器嘗試傳播草的延遲（以刻度表示）。值越高，傳播速度越慢。
+
+allow-leashing-undead-horse
+default: false
+# description: Instructs the server to allow players to leash undead horse types.
+# 指示服務器允許玩家牽制不死馬類型。
+
+frosted-ice
+# 磨砂冰
+
+enabled
+default: true
+# description: Instructs the server to enable (and tick) frosted ice blocks
+# 指示服務器啟用（並勾選）磨砂冰塊
+
+delay
+# 延遲
+
+min
+default: 20
+# description: minimum RNG value to apply frosted-ice effects at.
+# 施加磨砂冰效果的最小RNG值。
+
+max
+default: 40
+# description: maximum RNG value to apply frosted-ice effects at.
+# 施加磨砂冰效果的最大RNG值。
+
+hopper
+# 漏斗
+
+push-based
+default: false
+# description: Instructs the server to use an alternative hopper system in which items push themselves into hoppers.
+# 指示服務器使用替代的料斗系統，其中物品將自己推入料斗。
+# warning: This feature improves performance but is buggy and known to cause problems.
+# 此功能可以提高性能但是有問題並且已知會導致問題。
+# 1.13版本似乎移除此項
+
+cooldown-when-full
+default: true
+# description: Instructs the server to apply a short cooldown when the hopper is full, instead of constantly trying to pull new items.
+# 指示服務器在料斗裝滿時應用較短的冷卻時間，而不是不斷嘗試拉新物品。
+
+disable-move-event
+default: false
+# description: Completely disables the InventoryMoveItemEvent for hoppers. Dramatically improves hopper performance but will break protection plugins and any others that depend on this event.
+# 完全禁用料斗的InventoryMoveItemEvent。顯著改善料斗性能，但會破壞保護插件和依賴此事件的任何其他插件。
+
+baby-zombie-movement-speed
+default: 0.5
+# note: For reference, the vanilla player moves with a speed of 0.1.
+# 作為參考，香草玩家以0.1的速度移動。
+# description: Controls the speed baby zombies move at.
+# 控制寶寶殭屍移動的速度。
+
+keep-spawn-loaded
+default: true
+# description: Instructs the server to keep the spawn chunks loaded at all times.
+# 指示服務器始終加載生成的塊。
+
+enable-treasure-maps
+default: true
+# description: Allows villagers to trade treasure maps.
+# 允許村民交換寶藏地圖。
+# note: Disabling this may help keep available map IDs higher.
+# 禁用此功能可能有助於保持較高的可用地圖ID。
+
+treasure-maps-return-already-discovered
+default: false
+# description: Instructs the server to target the first treasure location found, rather than the first undiscovered one. Vanilla mechanics normally find the first undiscovered location, which may lead to structures that were not fully looted, and can also fail with a world border set. Enabling this will make the map simply find the closest target structure, regardless if it has been loaded or not already.
+# 指示服務器定位找到的第一個寶藏位置，而不是第一個未發現的寶藏位置。香草機械師通常會找到第一個未被發現的位置，這可能導致結構沒有被完全搶劫，並且也可能失敗並設置世界邊界。啟用此選項將使地圖簡單地找到最接近的目標結構，無論它是否已加載。
+
+nether-ceiling-void-damage
+default: false
+# description: Instructs the server to do void damage when an entity is on top of the nether ceiling. Use to limit nether ceiling travel in a vanilla-lore friendly way.
+# 當實體位於下層頂部時，指示服務器執行無效損壞。用於限制幽冥天花板旅行以香草 - 友好的方式。
+
+allow-non-player-entities-on-scoreboards
+default: false
+# description: Instructs the server to treat non-player entities as if they are never on a scoreboard.
+# 指示服務器將非玩家實體計算在記分板上。
+# note: Enabling this value may increase the amount of time the server spends calculating entity collisions.
+# 啟用此值可能會增加服務器計算實體衝突的時間。
+
+container-update-tick-rate
+default: 1
+# description: The rate, in ticks, at which the server updates containers and inventories.
+# 服務器更新容器和庫存的速率（以刻度表示）。
+
+use-alternate-fallingblock-onGround-detection
+default: false
+# description: Uses an alternative detection system to better handle falling blocks getting stuck on objects.
+# 使用另一種檢測系統來更好地處理掉落在物體上的塊。
+# 1.13版本似乎移除此項
+
+prevent-tnt-from-moving-in-water
+default: false
+# description: Instructs the server to keep Primed TNT entities from moving in flowing water.
+# 指示服務器保持Primed TNT實體在流動的水中移動。
+
+non-player-arrow-despawn-rate
+default: -1
+# note: The default value instructs the server to use the same default arrow despawn rate from spigot.yml that is used for all arrows.
+# 默認值指示服務器使用spigot.yml中用於所有箭頭的相同默認箭頭despawn rate。
+# description: The rate, in ticks, at which arrows shot from non-player entities are despawned.
+# 從非玩家實體射出箭頭的速率，以刻度表示。
+
+anti-xray
+# 防X射線
+
+enabled
+default: false
+# description: Controls the on/off state for the Anti-Xray system.
+# 控制Anti-Xray系統的開/關狀態。
+
+engine-mode
+default: 1
+# description: Sets the Anti-Xray engine mode. Where 1 is to replace hidden blocks with stone and 2 is to replace all blocks with random block data.
+# 設置Anti-Xray引擎模式。其中1是用石頭替換隱藏塊，2是用隨機塊數據替換所有塊。
+
+chunk-edge-mode
+default: 3
+# description: Sets how the engine handles chunk edges. Where 1 is not
+# to obfuscate the edges of chunks with unloaded neighbors, 2 is to not send the chunk until its neighbors are present (similar to a x-1 view distance), and 3 is to load the neighbor so it can properly obfuscate the current edge (similar to an x+1 view distance).
+# 設置引擎處理塊邊緣的方式。哪1不是
+# 使用未加載的鄰居模糊塊的邊緣，2是不發送塊直到其鄰居存在（類似於x-1視圖距離），3是加載鄰居以便它可以正確地混淆當前邊緣（類似至x + 1視距）。
+
+max-chunk-section-index
+default: 3
+# description: Controls to what Y value (height) the engine should operate to, expressed in chunk sections.
+# 控制引擎應該操作的Y值（高度），以塊為單位表示。
+# note: To determine the total height, use this formula: ($index + 1) * 16. Therefore, the default value of 3 will result in the engine functioning up to Y: 64.
+# 要確定總高度，請使用以下公式：（$ index + 1）* 16.因此，默認值3將導致引擎運行至Y：64。
+
+hidden-blocks
+default: { gold_ore, iron_ore, coal_ore, lapis_ore, mossy_cobblestone, obsidian, chest, diamond_ore, redstone_ore, lit_redstone_ore, clay, emerald_ore, ender_chest }
+# description: List of blocks to be hidden in engine mode 1.
+# 引擎模式下隱藏的塊列表1。
+# note: This list is using Mojang server names not bukkit names.
+# 此列表使用的是Mojang服務器名稱而不是 bukkit名稱。
+replacement-blocks:
+default: { stone, planks }
+# description: List of blocks that should be replaced by hidden-blocks in engine mode 2.
+# 引擎模式下隱藏的塊列表2。
+# note: This list is using Mojang server names not bukkit names.
+# 此列表使用的是Mojang服務器名稱而不是 bukkit名稱。
+
+experience-merge-max-value
+default: -1
+# description: Instructs the server put a maximum value on experience orbs, preventing them all from merging down into 1 single orb.
+# 指示服務器在體驗軌道上放置最大值，防止它們全部合併為1個單個球體。
+# note: The default value instructs the server to use no max value, allowing them to merge down into a single orb.
+# 默認值指示服務器不使用最大值，允許它們合併為單個球體。
+
+armor-stands-do-collision-entity-lookups
+default: true
+# description: Instructs armor stand entities to do entity collision checks.
+# 指示裝甲站實體進行實體碰撞檢查。
+
+queue-light-updates
+default: false
+# description: Instructs the server to queue up lighting updates to the end of the tick, then run them as it has free time, instead of running them as they’re scheduled.
+# 指示服務器將照明更新排隊到tick的結尾，然後在空閒時間運行它們，而不是在計劃時運行它們。
+
+optimize-explosions
+default: false
+# description: Instructs the server to cache entity lookups during an explosion, rather than recalculating throughout the process.
+# 指示服務器在爆炸期間緩存實體查找，而不是在整個過程中重新計算。
+
+use-chunk-inhabited-timer
+default: true
+# description: Instructs the server to factor the chunk inhabited timer into various calculations.
+# 指示服務器將塊居住計時器計入各種計算。
+# note: The timer is increased when chunks are kept loaded because of player activity.
+# 由於玩家活動而在保持加載塊時計時器會增加。
+# 1.13版本似乎移除此項
+
+use-vanilla-world-scoreboard-name-coloring
+default: false
+# description: Instructs the server to use the vanilla scoreboard for player nickname coloring.
+# 指示服務器使用vanilla記分板進行玩家暱稱著色。
+# note: Useful when playing on adventure maps made for the vanilla server and client.
+# 在為香草服務器和客戶端製作的冒險地圖上播放時很有用。
+
+delay-chunk-unloads-by
+default: 10s
+# description: Instructs the server to delay chunk unloads by this value, in seconds, to prevent chunk load/unload thrashing.
+# 指示服務器將塊卸載延遲此值（以秒為單位），以防止塊加載/卸載顛簸。
+
+max-auto-save-chunks-per-tick
+default: 24
+# description: The maximum number of chunks the auto-save system will save in a single tick.
+# 自動保存系統在單個tick中保存的最大塊數。
+
+save-queue-limit-for-auto-save
+default: 50
+# description: Instructs the server to skip adding more chunks to the auto save queue until it’s below this value.
+# 指示服務器跳過向自動保存隊列添加更多塊，直到它低於此值。
+
+remove-corrupt-tile-entities
+default: false
+# description: Instructs the server to automatically remove tile entities it detects as broken and cannot fix.
+# 指示服務器自動刪除它檢測為已損壞且無法修復的tile實體。
+
+max-chunk-sends-per-tick
+default: 81
+# description: The maximum number of chunks the server will send out to clients per-tick.
+# 服務器每個tick發送給客戶端的最大塊數。
+
+max-chunk-gens-per-tick
+default: 10
+# description: The maximum number of chunks the server will generate in a single tick.
+# 服務器在單個tick中生成的最大塊數。
+
+max-growth-height
+
+cactus
+default: 3
+# description: Maximum height cactus blocks will naturally grow to.
+# 仙人掌最大高度自然會增長到。
+
+reeds
+default: 3
+# description: Maximum height reed blocsk will naturally grow to.
+# 蘆葦最大高度自然會增長到。
+
+fishing-time-range
+# 釣魚時間範圍
+
+MinimumTicks
+default: 100
+# description: The minimum number of RNG ticks needed to catch a fish.
+# 捕獲魚所需的最小RNG蜱數。
+
+MaximumTicks
+default: 600
+# description: The maximum number of RNG ticks before catching a fish.
+# 捕魚前最大RNG滴答數。
+
+despawn-ranges
+
+soft
+default: 32
+# description: The number of blocks away from a player in which entities will be randomly selected to be despawned.
+# 遠離玩家的塊數，其中實體將被隨機選擇為墮落。
+
+hard
+default: 128
+# description: The number of blocks away from a player in which entities will be forcibly despawned.
+# 遠離實體將被強制摧毀的玩家的數量。
+
+falling-block-height-nerf
+default: 0
+# note: Values less than 1, will disable this feature.
+# 小於1的值將禁用此功能。
+# description: The height at which falling blocks will be removed from the server.
+# 將從服務器中刪除下降塊的高度。
+
+tnt-entity-height-nerf
+default: 0
+# note: Values less than 1, will disable this feature.
+# 小於1的值將禁用此功能。
+# description: The height at which Primed TNT entities will be removed from the server.
+# 將從服務器中刪除Primed TNT實體的高度。
+
+water-over-lava-flow-speed
+default: 5
+# description: Sets the speed at which water flows while over lava.
+# 設定水流過熔岩時的速度。
+
+fast-drain
+
+lava
+default: false
+# description: Controls whether lava blocks should drain more quickly when their source blocks are removed.
+# 控制熔岩塊在移除源塊時是否應更快地排出。
+# 1.13版本似乎移除此項
+
+water
+default: false
+# description: Controls whether water blocks should drain more quickly when their source blocks are removed.
+# 控制在移除源塊時是否應更快地排出水塊。
+# 1.13版本似乎移除此項
+
+lava-flow-speed
+
+normal
+default: 30
+# description: Sets the speed at which lava flows in the overworld.
+# 設置熔岩在世界中流動的速度。
+# 1.13版本似乎移除此項
+
+nether
+default: 10
+# description: Sets the speed at which lava flows in the nether.
+# 設置熔岩流動的速度。
+# 1.13版本似乎移除此項
+
+lootables
+
+auto-replenish
+default: false
+# description: Instructs the server to automatically replenish lootable containers.
+# 指示服務器自動補充可流動的容器。
+# note: This feature is useful for long-term worlds in which players are not expected to constantly explore to generate new chunks.
+# 此功能對於不期望玩家不斷探索以生成新塊的長期世界非常有用。
+
+restrict-player-reloot
+default: true
+# description: Prevents the same players from coming back and re-looting the same containers over and over.
+# 防止相同的玩家一次又一次地回來並重新搶奪相同的容器。
+
+reset-seed-on-fill
+default: true
+# description: Resets the loot seed each time the lootable is refilled. Effectively randomizing the new loot items on each refill.
+# 每次重新填充可掠奪物時重置戰利品種子。在每個筆芯上有效隨機化新的戰利品。
+
+max-refills
+default: -1
+# description: Sets the maximum number of times a lootable may be refilled.
+# 設置可重新填充可收回的最大次數。
+# note: The default value will allow a lootable to refilled an infinite number of times.
+# 默認值將允許可重複使用無限次重新填充。
+
+refresh-min
+default: 12h
+# description: The minimum amount of time that must pass before a lootable will be eligible to be refilled.
+# 在可掠奪之前必須經過的最短時間才有資格重新填寫。
+# note: This field uses time-based values. 12s = 12 seconds, 3h = 3 hours, 4d = 4 days.
+# 此字段使用基於時間的值。12s = 12秒，3h = 3小時，4d = 4天。
+
+refresh-max
+default: 2d
+# description: The maximum amount of time that can pass before a lootable is refilled.
+# 重新填充lootable之前可以通過的最長時間。
+# note: This field uses time-based values. 12s = 12 seconds, 3h = 3 hours, 4d = 4 days.
+# 此字段使用基於時間的值。12s = 12秒，3h = 3小時，4d = 4天。
+
+filter-nbt-data-from-spawn-eggs-and-related
+default: true
+# description: Instructs the server to remove certain NBT data from spawn-eggs, falling-blocks, and other often abused items in creative mode.
+# 指示服務器在創作模式下從生成蛋，掉落塊和其他經常被濫用的項目中刪除某些NBT數據。
+# note: Some adventure maps may require this be turned off to function correctly, but we do not recommend turning it off on a public server.
+# 某些冒險地圖可能需要關閉才能正常運行，但我們不建議在公共服務器上將其關閉。
+
+max-entity-collisions
+default: 8
+# description: Instructs the server to stop processing collisions after this value is reached.
+# 指示服務器在達到此值後停止處理衝突。
+
+disable-creeper-lingering-effect
+default: false
+# description: Disables creepers randomly leaving behind a lingering area effect cloud.
+# 隨機禁用爬行動物，留下揮之不去的區域效果雲。
+
+disable-thunder
+default: false
+# description: Disables thunderstorms
+# 禁用雷暴
+
+skeleton-horse-thunder-spawn-chance
+default: 0.01
+# description: Sets the chance that a “Skeleton Trap” (4 skeleton horsemen) will spawn in a thunderstorm.
+# 設置“骷髏陷阱”（4個骷髏騎士）在雷雨中產生的機率。
+
+disable-ice-and-snow
+default: false
+# description: Disables ice and snow formation.
+# 禁用冰雪形成。
+
+fire-physics-event-for-redstone
+default: false
+# description: Instructs the server to fire the BlockPhysicsEvent when redstone is activated.
+# 指示服務器在激活redstone時觸發BlockPhysicsEvent。
+
+mob-spawner-tick-rate
+default: 1
+# description: How often mob spawners should tick to calculate available spawn areas and spawn new entities into the world.
+# 暴徒產卵者應該多長時間來計算可用的產卵區域並將新實體產生到世界各地。
+
+all-chunks-are-slime-chunks
+default: false
+# description: Instructs the server to treat all chunks like slime chunks, allowing them to spawn in any chunk.
+# 指示服務器將所有塊視為粘塊，允許它們在任何塊中生成。
+# note: This may actually decrease your chances of running into a Slime as they now have a much larger potential spawn area.
+# 這實際上可能會降低你進入史萊姆的機率，因為他們現在有更大的潛在產卵區域。
+
+squid-spawn-height
+
+maximum
+default: 0.0
+# description: The maximum height at which squids will spawn.
+# 魷魚產卵的最大高度。
+# note: The default value defers to Minecraft’s default setting, which as of 1.12 is the sea-level of the world (usually Y: 64).
+# 默認值遵循Minecraft的默認設置，從1.12開始是世界海平面（通常為Y：64）。
+
+disable-teleportation-suffocation-check
+default: false
+# description: Disables the suffocation check the server performs before teleporting a player.
+# 在傳送播放器之前禁用服務器執行的窒息檢查。
+# note: While useful to keep your players out of walls, leaving this feature on may enable players to teleport through solid materials by logging out in specific locations.
+# 儘管讓玩家遠離牆壁非常有用，但保留此功能可以讓玩家通過在特定位置登出來傳輸固體材料。
+
+portal-search-radius
+default: 128
+# description: The maximum range the server will use to look for an existing nether portal. If it can’t find one in that range, it will generate a new one.
+# 服務器用於查找現有nether門戶的最大範圍。如果它找不到該範圍內的那個，它將生成一個新的。
+
+generator-settings
+# 發電機設定
+
+canyon
+default: true
+# description: Instructs the server to generate canyons.
+# 指示服務器生成峽谷。
+# 1.13版本似乎移除此項
+
+caves
+default: true
+# description: Instructs the server to generate caves.
+# 指示服務器生成洞穴。
+# 1.13版本似乎移除此項
+
+dungeon
+default: true
+# description: Instructs the server to generate dungeons.
+# 指示服務器生成地牢。
+# 1.13版本似乎移除此項
+
+fortress
+default: true
+# description: Instructs the server to generate fortresses.
+# 指示服務器生成堡壘。
+# 1.13版本似乎移除此項
+
+mineshaft
+default: true
+# description: Instructs the server to generate mineshafts.
+# 指示服務器生成礦井。
+# 1.13版本似乎移除此項
+
+monument
+default: true
+# description: Instructs the server to generate monuments.
+# 指示服務器生成紀念碑。
+# 1.13版本似乎移除此項
+
+stronghold
+default: true
+# description: Instructs the server to generate strongholds.
+# 指示服務器生成要塞。
+# 1.13版本似乎移除此項
+
+temple
+default: true
+# description: Instructs the server to generate temples.
+# 指示服務器生成模板。
+# 1.13版本似乎移除此項
+
+village
+default: true
+# description: Instructs the server to generate villages.
+# 指示服務器生成村莊。
+# 1.13版本似乎移除此項
+
+flat-bedrock
+default: false
+# description: Instructs the server to generate bedrock as a single, flat, layer.
+# 指示服務器將基岩生成為單個平面圖層。
+# 1.13版本似乎移除此項
+
+disable-extreme-hills-emeralds
+default: false
+# description: Prevents the server from generating emeralds in extreme hills biomes.
+# 防止服務器在極端山丘生物群系中生成祖母綠。
+# 1.13版本似乎移除此項
+
+disable-extreme-hills-monster-eggs
+default: false
+# description: Prevents the server from generating monster egg blocks in extreme hills biomes.
+# 防止服務器在極端山丘生物群系中生成怪物蛋塊。
+# 1.13版本似乎移除此項
+
+disable-mesa-additional-gold
+default: false
+# description: Prevents the server from generating extra gold in mesa biomes.
+# 防止服務器在檯面生物群系中產生額外的金幣。
+# 1.13版本似乎移除此項
+
+bed-search-radius
+default: 1
+# 床的搜尋半徑
+# 意義不明
+
+use-faster-eigencraft-redstone
+default: false
+# 使用更快速的紅石系統引擎
+# 意義不明
+
+creative-arrow-despawn-rate
+default: -1
+# 創造模式的箭頭消失時間
+# 意義不明
+
+duplicate-uuid-resolver
+default: saferegen
+# 重複的UUID解析選項，詳見https://github.com/PaperMC/Paper/blob/master/Spigot-Server-Patches/0295-Duplicate-UUID-Resolve-Option.patch
+# 意義不明
+
+duplicate-uuid-saferegen-delete-range
+default: 32
+# 重複的UUID刪除範圍，詳見https://github.com/PaperMC/Paper/blob/master/Spigot-Server-Patches/0295-Duplicate-UUID-Resolve-Option.patch
+# 意義不明
+
+fixed-chunk-inhabited-time
+default: -1
+#意義不明
+
+prevent-moving-into-unloaded-chunks
+default: false
+#避免玩家進入未加載的Chunk而導致掉入虛空，詳見https://github.com/PaperMC/Paper/issues/1686
